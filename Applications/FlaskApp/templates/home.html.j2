@@ -1,0 +1,71 @@
+{% extends 'layout.html.j2' %}
+
+{% block body %}
+
+<div style="text-align: justify">
+  <p>
+    This online tool presents the backwards simulation of fire haze in indonesia, tracking PM2.5 back to its source [more accurate description once full use of tool is crystalised]</p>
+
+  <p><center> Animation for the last <i>n</i> days </center></p>
+</div><!-- .entry-content -->
+<div id="box"></div>
+
+<input id="scrubber" type="range" min="0" max="1" step="0.01" value="0" />
+
+<script type="text/javascript">
+var boxframes = [
+	{
+		transform: 'translateX(0)',
+		background: 'red',
+		borderRadius: 0
+	},
+	{
+		transform: 'translateX(45vw) scale(.5)',
+		background: 'orange',
+		borderRadius: 0
+	},
+	{
+		transform: 'translateX(90vw)',
+		background: 'green',
+		borderRadius: '50%'
+	}
+]
+
+var boxref = document.getElementById("box")
+var scrubber = document.getElementById("scrubber")
+var animationlength = 3000
+var reqanimationreference
+var boxanimation = boxref.animate(boxframes, {
+    duration: animationlength,
+    fill: 'both',
+    easing: 'ease-in'
+})
+
+function updateScrubber(){
+    cancelAnimationFrame(reqanimationreference)
+    scrubber.value = boxanimation.currentTime/animationlength
+    reqanimationreference = requestAnimationFrame(updateScrubber)
+}
+
+scrubber.addEventListener('mousedown', ()=>{
+    boxanimation.pause()
+    updateScrubber()
+})
+
+/*scrubber.addEventListener('mouseup', ()=>{
+    boxanimation.play()
+})*/
+
+scrubber.addEventListener('input', ()=>{
+    boxanimation.currentTime = scrubber.value * animationlength
+})
+
+updateScrubber()
+
+boxanimation.onfinish =(()=>{
+  cancelAnimationFrame(reqanimationreference)
+  scrubber.value = animationlength/animationlength
+})
+
+</script>
+{% endblock %}
