@@ -27,10 +27,10 @@ requirements.txt is provided for full package version information and installing
 Install via git and anaconda
 
 ```bash
-git clone https://github.com/cemac-ccs/iFEED_prototype.git
-cd iFEED_Prototype
+git clone https://github.com/cemac-ccs/FlaskMWE.git
+cd FlaskMWE
 conda env create -f environment.yml
-conda activate iFEED
+conda activate FlaskMWE
 python wgsi.py
 ```
 Site can be viewed in a browser at
@@ -74,7 +74,3 @@ To run, from the repository directory
 ## Acknowledgements
 
 _coming soon_
-
-<!--## References
-
-* [https://github.com/universityofleeds/volcano-database](https://github.com/universityofleeds/volcano-database)-->
