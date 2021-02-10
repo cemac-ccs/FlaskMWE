@@ -1,4 +1,4 @@
-name: iFEED
+name: FlaskMWE
 channels:
   - conda-forge
   - defaults
@@ -135,5 +135,5 @@ dependencies:
   - zict=1.0.0=py_0
   - zlib=1.2.11=h516909a_1006
   - zstd=1.4.4=h3b9ef0a_1
-prefix: /home/chris/anaconda3/envs/iFEED
+prefix: /home/chris/anaconda3/envs/FlaskMWE
 
